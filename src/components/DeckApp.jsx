@@ -99,6 +99,25 @@ const pickRandomCard = (currentDeck) => {
     setPickedCardId(null);
   };
 
+  // === Updated: handle card click for swapping ===
+  const handleCardClick = (cardId) => {
+    if (pickedCardId === null) {
+      setPickedCardId(cardId); // Pick card
+    } else if (pickedCardId === cardId) {
+      setPickedCardId(null); // Unpick same card
+    } else {
+      // Swap positions of pickedCardId and cardId
+      const index1 = drawnCards.findIndex(card => card.id === pickedCardId);
+      const index2 = drawnCards.findIndex(card => card.id === cardId);
+
+      const newDrawn = [...drawnCards];
+      [newDrawn[index1], newDrawn[index2]] = [newDrawn[index2], newDrawn[index1]];
+
+      setDrawnCards(newDrawn);
+      setPickedCardId(null); // Clear picked card after swap
+    }
+  };
+
 
 
 
