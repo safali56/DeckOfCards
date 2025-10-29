@@ -40,6 +40,12 @@ const pickRandomCard = (currentDeck) => {
     setDeck(newDeck);
     setDrawnCards([...drawnCards, selectedCard]);
   };
+
+  //Reset Button Handler
+  const handleReset = () => {
+    setDeck([...deck, ...drawnCards]);
+    setDrawnCards([]);
+  };
   return (
     <div>
       <div className="deck-rectangle mx-auto my-4"
