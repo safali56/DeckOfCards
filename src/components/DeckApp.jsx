@@ -55,8 +55,14 @@ const pickRandomCard = (currentDeck) => {
     } else {
       setPickedCardId(cardID);
     } 
-  }    
   };
+
+  //Toss picked card
+  const handleToss = () => {
+    if(pickedCardId === null) return;
+    setDrawnCards(drawnCards.filter(card => card.id !== pickedCardId));
+    setPickedCardId(null);
+  }
 
   return (
     <div>
@@ -82,6 +88,7 @@ const pickRandomCard = (currentDeck) => {
           </div>
     </div>
   );
+}
 
 
 export default DeckApp;
