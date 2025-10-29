@@ -1,33 +1,20 @@
-import React, {useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import DeckApp from './components/DeckApp';
 
-
-
-
-
+import './styles/deck.css';
 
 function App() {
-  const [deck, setDeck] = useState([]);
-  const [dealt, setDealt] = useState([]);
-  constant[discard, setDiscard] = useState([]);
+  
 
   return (
     <div className="container text-center py-4">
       <h1 className="mb-3">Deck of Cards</h1>
-
+   
+      <DeckApp />
       
       </div>
 
-   
-
- 
-  
-   
-    
-    
-  )
+   )
 }
 
 export default App
