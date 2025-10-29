@@ -22,6 +22,7 @@ function DeckApp() {
   const [deck, setDeck] = useState(initializeDeck());
   const [drawnCards, setDrawnCards] = useState([]);
   const [pickedCardId, setPickedCardId] = useState(null);
+  const[wildcardId, setWildcardId] = useState(1000); //Unique ID for wildcards
 
   //Pick a random card from the deck
 const pickRandomCard = (currentDeck) => {
@@ -48,14 +49,6 @@ const pickRandomCard = (currentDeck) => {
     setDrawnCards([]);
   };
 
-  // Pick a card from drawnCards
-  const handleCardClick = (cardID) => {
-    if (pickedCardId === cardID) {
-      setPickedCardId(null); //Deselect if already picked
-    } else {
-      setPickedCardId(cardID);
-    } 
-  };
 
   //Toss picked card
   const handleToss = () => {
@@ -131,12 +124,15 @@ const pickRandomCard = (currentDeck) => {
 
       <div className="deck-rectangle mx-auto my-4"></div>
       <div>
-        <button className="btn btn-primary mx-1">Deal 5</button>
-        <button className="btn btn-primary mx-1">Deal 7</button>
-        <button className="btn btn-secondary mx-1">Reset</button>
-        <button className="btn btn-danger mx-1">Toss</button>
-        <button className="btn btn-warning mx-1">Wildcard</button>
-        <button className="btn btn-info mx-1">Regroup</button>
+        <div>
+  <button className="btn btn-primary mx-1" onClick={() => handleDeal(5)}>Deal 5</button>
+  <button className="btn btn-primary mx-1" onClick={() => handleDeal(7)}>Deal 7</button>
+  <button className="btn btn-secondary mx-1" onClick={handleReset}>Reset</button>
+  <button className="btn btn-danger mx-1" onClick={handleToss}>Toss</button>
+  <button className="btn btn-warning mx-1" onClick={handleWildcard}>Wildcard</button>
+  <button className="btn btn-info mx-1" onClick={handleRegroup}>Regroup</button>
+</div>
+
       </div>
       <div className="d-flex flex-wrap justify-content-center mt-3">
         {drawnCards.map((card) => (
