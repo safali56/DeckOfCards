@@ -74,6 +74,16 @@ const pickRandomCard = (currentDeck) => {
     setPickedCardId(null);
   };
 
+  //Wildcard button handler
+  const handleWildcard = () => {
+    const randomSuit = suits[Math.floor(Math.random() * suits.length)];
+    const randomValue = values[Math.floor(Math.random() * values.length)];
+    const newCard = { id: wildcardId, suit: randomSuit, value: randomValue };
+    setWildcardId(prev => prev + 1);
+    setDrawnCards([...drawnCards, newCard]);
+    setPickedCardId(null);
+};
+
 
 
   return (
