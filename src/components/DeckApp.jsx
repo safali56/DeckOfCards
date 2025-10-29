@@ -20,12 +20,25 @@ function DeckApp() {
     return deck;
   };
   const [deck, setDeck] = useState(initializeDeck());
-  const [drwanCards, setDrawnCards] = useState([]);
+  const [drawnCards, setDrawnCards] = useState([]);
+
+  //Pick a random card from the deck
+const pickRandomCard = (currentDeck) => {
+    const randomIndex = Math.floor(Math.random() * currentDeck.length);
+    const selectedCard = currentDeck[randomIndex];
+    const newDeck = [...currentDeck];
+    newDeck.splice(randomIndex, 1); //Remove selected card from deck
+    return { selectedCard, newDeck }
+
+    };
 
   //Click handler for deck rectangle
 
   const handleDeckClick = () => {
-    console.log('Deck clicked! Cards remaining:', deck.length);
+    if(deck.length === 0) return;
+    const { selectedCard, newDeck } = pickRandomCard(deck);
+    setDeck(newDeck);
+    setDrawnCards([...drawnCards, selectedCard]);
   };
   return (
     <div>
@@ -45,7 +58,7 @@ function DeckApp() {
         <button className="btn btn-info mx-1">Regroup</button>
       </div>
       <div className="d-flex flex-wrap justify-content-center mt-3">
-        {drwanCards.map((card) => (
+        {drawnCards.map((card) => (
           <Card key={card.id} suit={card.suit} value={card.value} />
         ))}           
           </div>
