@@ -49,6 +49,8 @@ const pickRandomCard = (currentDeck) => {
     setDrawnCards([]);
   };
 
+  // Pick a card from drawnCards (handled by the swap-capable handler defined below)
+  // Note: the full click/swapping behavior is implemented later in this file.
 
   //Toss picked card
   const handleToss = () => {
