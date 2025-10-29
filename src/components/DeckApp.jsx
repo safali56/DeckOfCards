@@ -21,6 +21,7 @@ function DeckApp() {
   };
   const [deck, setDeck] = useState(initializeDeck());
   const [drawnCards, setDrawnCards] = useState([]);
+  const [pickedCardId, setPickedCardId] = useState(null);
 
   //Pick a random card from the deck
 const pickRandomCard = (currentDeck) => {
@@ -46,6 +47,17 @@ const pickRandomCard = (currentDeck) => {
     setDeck([...deck, ...drawnCards]);
     setDrawnCards([]);
   };
+
+  // Pick a card from drawnCards
+  const handleCardClick = (cardID) => {
+    if (pickedCardId === cardID) {
+      setPickedCardId(null); //Deselect if already picked
+    } else {
+      setPickedCardId(cardID);
+    } 
+  }    
+  };
+
   return (
     <div>
       <div className="deck-rectangle mx-auto my-4"
@@ -70,6 +82,6 @@ const pickRandomCard = (currentDeck) => {
           </div>
     </div>
   );
-}
+
 
 export default DeckApp;

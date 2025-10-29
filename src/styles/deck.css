@@ -30,3 +30,8 @@
 .card-suit {
   font-size: 2rem;
 }
+.picked-card {
+  border: 3px solid #007bff;
+  border-radius: 10px;
+  padding: 2px;
+}
