@@ -83,6 +83,22 @@ const pickRandomCard = (currentDeck) => {
     setDrawnCards([...drawnCards, newCard]);
     setPickedCardId(null);
 };
+// === Deal n cards handler ===
+  const handleDeal = (n) => {
+    let currentDeck = [...deck, ...drawnCards]; // return all drawn cards to deck
+    const newDrawn = [];
+
+    for (let i = 0; i < n && currentDeck.length > 0; i++) {
+      const { selectedCard, newDeck } = pickRandomCard(currentDeck);
+      currentDeck = newDeck;
+      newDrawn.push(selectedCard);
+    }
+
+    setDeck(currentDeck);
+    setDrawnCards(newDrawn);
+    setPickedCardId(null);
+  };
+
 
 
 
