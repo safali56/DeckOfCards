@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div className="container text-center py-4">
-      <h1 className="mb-3">Deck of Cards</h1>
+      <h1 className="mb-3 text-light">Deck of Cards</h1>
    
       <DeckApp />
       

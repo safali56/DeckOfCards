@@ -122,9 +122,7 @@ const pickRandomCard = (currentDeck) => {
         onClick={handleDeckClick}>
           {deck.length ===0 && <span className="text-white">No cards remaining</span>} 
       </div>
-
-
-      <div className="deck-rectangle mx-auto my-4"></div>
+      
       <div>
         <div>
   <button className="btn btn-primary mx-1" onClick={() => handleDeal(5)}>Deal 5</button>
