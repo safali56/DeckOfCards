@@ -62,7 +62,19 @@ const pickRandomCard = (currentDeck) => {
     if(pickedCardId === null) return;
     setDrawnCards(drawnCards.filter(card => card.id !== pickedCardId));
     setPickedCardId(null);
-  }
+  };
+  //Regroup drawn cards back into deck
+  const handleRegroup = () => {
+    const shuffled = [...drawnCards];
+    for(let i = shuffled.length -1; i>0; i--) {
+      const j = Math.floor(Math.random() * (i +1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    setDrawnCards(shuffled);
+    setPickedCardId(null);
+  };
+
+
 
   return (
     <div>
