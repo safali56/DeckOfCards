@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './card';
 import '../styles/deck.css';
+import { useState } from 'react';
 
 
 function DeckApp() {
@@ -21,7 +22,8 @@ function DeckApp() {
   const [deck, setDeck] = useState(initializeDeck());
   const [drwanCards, setDrawnCards] = useState([]);
 
-  //Click handler for deck rectangle(future logic)
+  //Click handler for deck rectangle
+
   const handleDeckClick = () => {
     console.log('Deck clicked! Cards remaining:', deck.length);
   };
@@ -32,7 +34,7 @@ function DeckApp() {
           {deck.length ===0 && <span className="text-white">No cards remaining</span>} 
       </div>
 
-      
+
       <div className="deck-rectangle mx-auto my-4"></div>
       <div>
         <button className="btn btn-primary mx-1">Deal 5</button>
@@ -42,6 +44,11 @@ function DeckApp() {
         <button className="btn btn-warning mx-1">Wildcard</button>
         <button className="btn btn-info mx-1">Regroup</button>
       </div>
+      <div className="d-flex flex-wrap justify-content-center mt-3">
+        {drwanCards.map((card) => (
+          <Card key={card.id} suit={card.suit} value={card.value} />
+        ))}           
+          </div>
     </div>
   );
 }
