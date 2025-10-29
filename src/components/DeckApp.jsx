@@ -138,7 +138,15 @@ const pickRandomCard = (currentDeck) => {
       </div>
       <div className="d-flex flex-wrap justify-content-center mt-3">
         {drawnCards.map((card) => (
-          <Card key={card.id} suit={card.suit} value={card.value} />
+          <div
+      key={card.id}
+      onClick={() => handleCardClick(card.id)}
+      className={pickedCardId === card.id ? 'picked-card' : ''}
+    >
+      <Card suit={card.suit} value={card.value} />
+    </div>
+
+          
         ))}           
           </div>
     </div>
